@@ -24,7 +24,7 @@ class Container
     }
     if (!$tagArg) return $this;
     
-    $tag = is_array($tagArg) ? $tagArg : ['name' => $tag];
+    $tag = is_array($tagArg) ? $tagArg : ['name' => $tagArg];
     
     $tag['service_id'] = $id;
     
