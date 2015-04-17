@@ -1,0 +1,10 @@
+{
+  "name": "cerad/di",
+  "license": "MIT",
+  "type": "project",
+  "description": "DI - Dependency Injection Container",
+  "autoload": { "psr-4": { "Cerad\\Component\\DependencyInjection\\": "" }},
+  "require": 
+  {
+  }
+}
