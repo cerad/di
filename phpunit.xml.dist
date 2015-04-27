@@ -9,7 +9,7 @@
 >
   <testsuites>
     <testsuite name="DI Container Test Suite">
-      <directory>ContainerTest.php</directory>
+      <directory>tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>

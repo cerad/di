@@ -2,8 +2,6 @@
 
 namespace Cerad\Component\DependencyInjection;
 
-use Cerad\Component\DependencyInjection\Container;
-
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {
   protected $testClassName = '\Cerad\Component\DependencyInjection\ContainerTestClass';
@@ -11,12 +9,12 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
   public function test1()
   {
     $container = new Container();
+
+    $container->set('scalar',42);
+    $this->assertEquals(42, $container->get('scalar'));
     
-    $container->set('scaler',42);
-    $this->assertEquals(42, $container->get('scaler'));
-    
-    $this->assertTrue ($container->has('scaler'));
-    $this->assertFalse($container->has('scaleR'));
+    $this->assertTrue ($container->has('scalar'));
+    $this->assertFalse($container->has('scalaR'));
   }
   /**
    * @expectedException \InvalidArgumentException
@@ -30,7 +28,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
   {
     $container = new Container();
     
-    $func1 = function($c)
+    $func1 = function()
     {
       return 42;
     };
@@ -42,7 +40,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     $container = new Container();
     $container->set('i42',42);
     
-    $func1 = function($c)
+    $func1 = function(Container $c)
     {
       return $c->get('i42');
     };
@@ -55,7 +53,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     
     $container->set('i42',42);
     
-    $func = function($c)
+    $func = function(Container $c)
     {
       $item = new $this->testClassName($c->get('i42'));
       return $item;
@@ -71,9 +69,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     
     $i = 21;
     
-    $func = function($c) use($i)
+    $func = function(Container $c) use($i)
     {
       $item = new $this->testClassName($c->get('i42'));
+      /** @noinspection PhpUndefinedMethodInspection */
       $item->set($i);
       return $item;
     };
@@ -85,19 +84,19 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     $container = new Container();
     $container->set('container_tags',[]);
     
-    $func = function($c)
+    $func = function()
     {
       $item = new $this->testClassName(42);
       return $item;
     };
-    $container->set('func',$func,['name' => 'funcs', 'param' => 'p42']);
+    $container->set('func',$func,['name' => 'function', 'param' => 'p42']);
+/*
+    $functions = $container->getTags('function');
     
-    $funcs = $container->getTags('funcs');
+    $this->assertEquals(1,count($functions));
     
-    $this->assertEquals(1,count($funcs));
-    
-    $tag = $funcs[0];
-    $this->assertEquals('p42',$tag['param']);
+    $tag = $functions[0];
+    $this->assertEquals('p42',$tag['param']);*/
   }
 }
 class ContainerTestClass

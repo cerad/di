@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="CodeInspection" pattern="file[di]:tests/*||file:Container.php" />
+</component>

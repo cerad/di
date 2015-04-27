@@ -34,7 +34,12 @@ class Container
     
     return $this;
   }
-  // Singletons
+  /**
+   * Singletons
+   *
+   * @param string $id
+   * @return mixed
+   */
   public function get($id)
   {
     if (isset($this->instances[$id])) return $this->instances[$id];

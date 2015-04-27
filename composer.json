@@ -8,6 +8,7 @@
   "autoload": { "psr-4": { "Cerad\\Component\\DependencyInjection\\": "" }},
   "require": 
   {
-    "php": ">=5.5.5"
+    "php": ">=5.5.5",
+    "phpunit/phpunit": "~4.6"
   }
 }
