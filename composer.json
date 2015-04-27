@@ -5,7 +5,7 @@
   "homepage": "http://zayso.org",
   "authors": [{ "name": "Art Hundiak", "email": "ahundiak@gmail.com" }],
   "license": "MIT",
-  "autoload": { "psr-4": { "Cerad\\Component\\DependencyInjection\\": "" }},
+  "autoload": { "psr-4": { "Cerad\\Component\\DependencyInjection\\": "src" }},
   "require": 
   {
     "php": ">=5.5.5",
